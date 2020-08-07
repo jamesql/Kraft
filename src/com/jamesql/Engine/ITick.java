@@ -2,6 +2,10 @@ package com.jamesql.Engine;
 
 public interface ITick {
 
-	public static int curTick = 0;
+	void nextTick(TickState prevTick);
+	void getTickHistory();
+	void previousTick();
+	void garbageCollect();
+	void lastGoodTick();
 	
 }
