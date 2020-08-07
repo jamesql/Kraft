@@ -1,6 +1,16 @@
 package com.jamesql.Engine;
 
-import org.lwjgl.glfw.*;
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.glClearColor;
+import static org.lwjgl.system.MemoryUtil.NULL;
+
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWWindowSizeCallback;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
 
 public class Frame implements IFrame {
 
@@ -15,12 +25,14 @@ public class Frame implements IFrame {
 
 	private boolean resized = false;
 	
-	// init dimensions
+	// Create window dimensions.
 	public Frame(String title, int width, int height) { t=title;w=width;h=height; }
 	
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
+		glfwSetErrorCallback(T_error = GLFWErrorCallback.createPrint(System.err));
+		if(glfwInit()) throw new IllegalStateException("GLFW FAILED.");
+		
 		
 	}
 
