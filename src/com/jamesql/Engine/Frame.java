@@ -3,11 +3,6 @@ package com.jamesql.Engine;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.system.MemoryUtil.NULL;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-
 import static org.lwjgl.opengl.GL11.GL_FALSE;
 import static org.lwjgl.opengl.GL11.GL_TRUE;
 
@@ -41,6 +36,7 @@ public class Frame implements IFrame {
 		if(glfwInit()) throw new IllegalStateException("GLFW FAILED.");
 		
 		handle = glfwCreateWindow(w,h,t,0,0);
+		
 		
 	}
 
@@ -78,12 +74,6 @@ public class Frame implements IFrame {
 	public boolean shouldWindowClose() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-	
-	public ByteBuffer str_to_buffer(String str)
-	{
-		try { return Charset.forName("UTF-8").newEncoder().encode(CharBuffer.wrap(str)); } catch(Exception e){ e.printStackTrace(); }
-		return null;
 	}
 	
 }
