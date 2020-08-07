@@ -33,7 +33,7 @@ public class Frame implements IFrame {
 	@Override
 	public void init() {
 		glfwSetErrorCallback(T_error = GLFWErrorCallback.createPrint(System.err));
-		if(glfwInit()) throw new IllegalStateException("GLFW FAILED.");
+		if(!glfwInit()) throw new IllegalStateException("GLFW FAILED.");
 		
 		handle = glfwCreateWindow(w,h,t,0,0);
 		
