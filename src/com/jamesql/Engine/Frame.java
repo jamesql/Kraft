@@ -15,10 +15,8 @@ public class Frame implements IFrame {
 
 	private boolean resized = false;
 	
-	public Frame(String title, int width, int height)
-	{
-		t=title;w=width;h=height;
-	}
+	// init dimensions
+	public Frame(String title, int width, int height) { t=title;w=width;h=height; }
 	
 	@Override
 	public void init() {
