@@ -79,6 +79,7 @@ public class Frame implements IFrame {
 	public void update() {
 		glfwSwapBuffers(handle);
 		glfwPollEvents();
+		GL11.glFlush();
 		
 	}
 
