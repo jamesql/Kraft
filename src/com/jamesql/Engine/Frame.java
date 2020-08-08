@@ -28,7 +28,7 @@ public class Frame implements IFrame {
 	private boolean resized = false;
 	
 	// Create window dimensions.
-	public Frame(String title, int width, int height) { t=title;w=width;h=height; }
+	public Frame(String title, int width, int height) { t=title;w=width;h=height;init(); }
 	
 	@Override
 	public void init() {
@@ -37,7 +37,24 @@ public class Frame implements IFrame {
 		
 		handle = glfwCreateWindow(w,h,t,0,0);
 		
+		GLFWVidMode vm = glfwGetVideoMode(glfwGetPrimaryMonitor());
 		
+		// center & make context
+		glfwSetWindowPos(handle, (vm.width() - w) / 2, (vm.height() - h) / 2);
+		glfwMakeContextCurrent(handle);
+		
+		glfwSwapInterval(1);
+		glfwShowWindow(handle);
+		GL.createCapabilities();
+		
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		GL11.glEnable(GL11.GL_CULL_FACE);
+		GL11.glCullFace(GL11.GL_BACK);
+		
+		while(!shouldWindowClose())
+		{
+			this.update();
+		}
 	}
 
 	@Override
@@ -60,7 +77,8 @@ public class Frame implements IFrame {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		glfwSwapBuffers(handle);
+		glfwPollEvents();
 		
 	}
 
